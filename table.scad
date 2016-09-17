@@ -1,22 +1,21 @@
-module Pyramid(angle) {
-  num = 3;
-
-  for (a = [0:num-1]) {
-    rotate([0,0,a*360/num]) rotate([0,angle,0]) children(0);
-  }
-}
+use <tetrahedron.scad>;
+use <legs3.scad>;
+use <cover.scad>;
 
 
+tetrHalfHeight = 2 * sqrt(2/3) * 185;
 
-module Leg() {
-  cylH = 1100;
-  cylR = 10;
+rotate([0,0,-30])
+  color("green") Tetrahedron();
 
-  Pyramid(angle=10) {
-    cylinder(h=cylH, r=cylR);
-  }
-}
 
-Pyramid(angle=40) translate([0,0,1000]) rotate([180, 0, 0]) Leg();
+//lower legs
+Legs3();
 
-color([0,0,1, 0.3]) translate([0,0,770]) cylinder(h=10, d=2000);
+//upper legs
+translate([0, 0, tetrHalfHeight])
+  mirror([0,0,1])
+    Legs3();
+
+translate([0,0,505])
+  color([0, 0, 1, 0.2]) Cover();
