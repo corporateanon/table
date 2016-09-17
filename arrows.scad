@@ -1,3 +1,5 @@
+include <constants.scad>
+
 arrowHeadLength = 56.7;
 arrowHeadFacetLength = 3.2;
 arrowHeadConeLength = 56.7 - 3.2;
@@ -33,15 +35,15 @@ module Arrow(len, d=16, center=false) {
 }
 
 module ArrowType1(center=false) {
-  Arrow(len=501.2, center=center);
+  Arrow(len=A1_LENGTH, center=center);
 }
 
 module ArrowType2(center=false) {
-  Arrow(len=446.8, center=center);
+  Arrow(len=A2_LENGTH, center=center);
 }
 
 module ArrowType3(center=false) {
-  Arrow(len=185, center=center);
+  Arrow(len=T_SIDE, center=center);
 }
 // ArrowType3();
 
